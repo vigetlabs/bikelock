@@ -11,7 +11,8 @@ class Hardware
     def attempt(action)
       core.function(action, "")
       true
-    rescue
+    rescue => e
+      Airbrake.notify(e)
       false
     end
 
