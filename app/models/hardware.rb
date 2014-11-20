@@ -12,8 +12,7 @@ class Hardware
       core.function(action, "")
       true
     rescue => e
-      raise e if Rails.env.development?
-      Airbrake.notify(e)
+      handle_error(e)
       false
     end
 
@@ -21,6 +20,11 @@ class Hardware
 
     def core
       RubySpark::Core.new(RubySparkConfig::CORE_ID)
+    end
+
+    def handle_error(e)
+      raise e if Rails.env.development?
+      Airbrake.notify(e)
     end
   end
 end

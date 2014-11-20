@@ -3,16 +3,18 @@ class Text < ActiveRecord::Base
   default_scope { order(:id) }
 
   def lock
-    Hardware.lock
-    update_attribute(:locked, true)
-  rescue Net::ReadTimeout
-    false
+    if Hardware.lock
+      update_attribute(:locked, true)
+    else
+      false
+    end
   end
 
   def unlock
-    Hardware.unlock
-    update_attribute(:locked, false)
-  rescue Net::ReadTimeout
-    false
+    if Hardware.unlock
+      update_attribute(:locked, false)
+    else
+      false
+    end
   end
 end
