@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  margin: 0;
+}
+
+.lock, .unlock {
+  text-decoration: none;
+
+  padding-top: 48vh;
+  font-size: 50px;
+  width: 50%;
+  text-align: center;
+  height: 100vh;
+}
+
+.lock {
+  float: left;
+  background: #FF3F3F;
+
+  &:hover {
+    background: #FF3535;
+  }
+}
+
+.unlock {
+  float: right;
+  background: #72D554;
+
+  &:hover {
+    background: #66D544;
+  }
+}
+
+.alert {
+  position: absolute;
+  background: linen;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  width: 400px;
+  top: 20px;
+  border-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.alert-close {
+  float: right;
+  padding-right: 10px;
+  text-decoration: none;
+}

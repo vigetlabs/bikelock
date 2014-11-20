@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bikelock</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %>">
+      <%= message %>
+      <a href="#" class="alert-close">×</a>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  <%= javascript_include_tag "application" %>
+
+</body>
+</html>
