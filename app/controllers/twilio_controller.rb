@@ -14,7 +14,7 @@ class TwilioController < ApplicationController
     body = params[:Body]
 
     if locked_already?
-      if authorized_to_unlock
+      if authorized_to_unlock(from, body)
         return last_text.unlock ? "Unlocked!" : system_down
       else
         return "Sorry. Invalid unlock attempt"
@@ -30,7 +30,7 @@ class TwilioController < ApplicationController
     last_text.locked?
   end
 
-  def authorized_to_unlock
+  def authorized_to_unlock(from, body)
     from == last_text.from && body == last_text.lock_phrase
   end
 

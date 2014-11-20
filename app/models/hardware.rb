@@ -12,6 +12,7 @@ class Hardware
       core.function(action, "")
       true
     rescue => e
+      raise e if Rails.env.development?
       Airbrake.notify(e)
       false
     end
